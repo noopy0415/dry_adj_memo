@@ -1,0 +1,66 @@
+<%= form_with model: @dry, local: true, class: 'form-horizontal'  do |f|%>
+  <%= render partial: 'layouts/errors', locals: { model: @dry } %>
+
+  <%= f.hidden_field :task_id %>
+
+  <div class="form-group">
+    <%= f.label "依頼者", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= @dry.task.req_user_name %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "品種", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= @dry.task.req_valiety %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "乾燥機", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+    <% if @page == "乾燥修正" %>
+      <%= f.hidden_field :drier_id %>
+      <%= @dry.drier.name %>
+    <% else %>
+      <%= f.collection_select(:drier_id, Drier.all, :id, :name, { include_blank: "乾燥機を選択してください" }, class:"form-control") %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "初期水分", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.number_field :init_moist, min: 14.0, max: 30, step: 0.1, class:"form-control" %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :dry_condition1 %>
+  <%= f.hidden_field :dry_condition2 %>
+  <%= f.hidden_field :dry_condition3 %>
+  <%= f.hidden_field :dry_condition4 %>
+  <%= f.hidden_field :dry_condition5 %>
+  <%= f.hidden_field :dry_condition6 %>
+
+  <div class="form-group">
+    <%= f.label "メモ", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_area :dry_note, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3 control-label"></div>
+    <div class="col-sm-9">
+      <%= f.submit "乾燥", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3 control-label"></div>
+    <div class="col-sm-9">
+      <%= link_to '戻る', root_path, class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
