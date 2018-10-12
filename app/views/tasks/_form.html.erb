@@ -1,0 +1,41 @@
+<%= form_with model: @task, local: true, class: 'form-horizontal' do |f| %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="form-group">
+    <%= f.label "依頼者", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_field :req_user_name, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "品種", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_field :req_valiety,   class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "メモ", class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_area  :task_note,     class:"form-control" %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :task_act, value:true %>
+
+  <div class="form-group">
+    <div class="col-sm-3 control-label"></div>
+    <div class="col-sm-9">
+      <%= f.submit "受付", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3 control-label"></div>
+    <div class="col-sm-9">
+      <%= link_to '戻る', root_path, class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>

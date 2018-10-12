@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: 1
+  trader_id: 1
+  container: 1
+  container_shipment: false
+  bag: 1
+  bag_shipment: false
+  half: 1.5
+  half_shipment: false
+  adj_note: MyText
+
+two:
+  task_id: 1
+  trader_id: 1
+  container: 1
+  container_shipment: false
+  bag: 1
+  bag_shipment: false
+  half: 1.5
+  half_shipment: false
+  adj_note: MyText
